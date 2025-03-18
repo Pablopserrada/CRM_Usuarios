@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { IUsuario } from '../../interfaces/iusuario.interfaces';
+import { UsersService } from '../../services/users.service';
 
 @Component({
   selector: 'app-lista-usuarios',
@@ -8,4 +10,19 @@ import { Component } from '@angular/core';
 })
 export class ListaUsuariosComponent {
 
+  /* arrUsuario : IUsuario[] = []
+  usuariosService = inject(UsersService)
+
+  ngOnInit() {
+    this.getUsuarios()
+  }
+
+  async getUsuarios() {
+    try {
+      this.arrUsuario = await this.usuariosService.getAllUsers()
+      console.log(this.arrUsuario)
+    } catch (msg: any){
+      console.log(msg)
+    }
+  } */
 }
