@@ -10,7 +10,7 @@ import { UsersService } from '../../services/users.service';
 })
 export class ListaUsuariosComponent {
 
-  /* arrUsuario : IUsuario[] = []
+  arrUsuario : IUsuario[] = []
   usuariosService = inject(UsersService)
 
   ngOnInit() {
@@ -24,5 +24,5 @@ export class ListaUsuariosComponent {
     } catch (msg: any){
       console.log(msg)
     }
-  } */
+  }
 }
