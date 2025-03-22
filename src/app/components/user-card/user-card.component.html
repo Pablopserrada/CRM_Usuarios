@@ -1,1 +1,27 @@
-<p>user-card works!</p>
+<div class="card border border-3 border-gray">
+    <img [src]="miUsuario.image" alt="{{miUsuario.first_name}} {{miUsuario.last_name}}" class="card-img-top">
+    <div class="card-body">
+        <h3 class="card-title text-center">{{miUsuario.first_name}}</h3>
+        <h5 class="card-subtitle text-center">{{miUsuario.username}}</h5>
+    </div>
+    <div class="row">
+        <div class="col-4 text-center">
+            <a [routerLink]="['/perfilUsuario/', miUsuario._id]">
+                <img src="./lupa.png" alt="Ver detalle" class="img">
+                <p class="links">Ver detalle</p>
+            </a>
+        </div>
+        <div class="col-4 text-center">
+            <a [routerLink]="['/actualizarUsuario/', miUsuario._id]">
+                <img src="./actualizar.png" alt="Ver detalle" class="img">
+                <p class="links">Actualizar</p>
+            </a>
+        </div>
+        <div class="col-4 text-center">
+            <a (click)="deleteUser()">
+                <img src="./eliminar.png" alt="Ver detalle" class="img">
+                <p class="links">Eliminar</p>
+            </a>
+        </div>
+    </div>
+</div>

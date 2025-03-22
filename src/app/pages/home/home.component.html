@@ -1,3 +1,16 @@
 <app-header></app-header>
-<h1>Bienvenidos a nuestro CRM de Empleados</h1>
-<app-lista-usuarios></app-lista-usuarios>
+<main class="container">
+    <h1>Bienvenidos a nuestro CRM de Empleados</h1>
+    <hr>
+    <p>En este CRM de Usuarios podrás gestionar eficientemente la información de los empleados. Podrás ver una lista completa de usuarios, acceder a sus perfiles, actualizarlos o eliminarlos según sea necesario.</p>
+    
+    <section class="lista-usuarios">
+        <div class="row g-4 justify-content-left py-5">
+            @for (usuario of arrUsuario; track usuario._id) {
+                <article class="col-12 col-md-6 col-lg-3">
+                    <app-user-card [miUsuario]="usuario"></app-user-card>
+                </article>
+            }
+        </div>
+    </section>
+</main>

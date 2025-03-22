@@ -1,18 +1,19 @@
 import { Component, inject } from '@angular/core';
 import { HeaderComponent } from '../../shared/header/header.component';
-import { ListaUsuariosComponent } from "../../components/lista-usuarios/lista-usuarios.component";
 import { UsersService } from '../../services/users.service';
 import { IUsuario } from '../../interfaces/iusuario.interfaces';
+import { IResponse } from '../../interfaces/iresponse.intefaces';
+import { UserCardComponent } from '../../components/user-card/user-card.component';
 
 @Component({
   selector: 'app-home',
-  imports: [HeaderComponent, ListaUsuariosComponent],
+  imports: [HeaderComponent,UserCardComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
 export class HomeComponent {
 
-  /* arrUsuario : IUsuario[] = []
+  arrUsuario : IUsuario[] = []
   usuariosService = inject(UsersService)
 
   ngOnInit() {
@@ -21,10 +22,11 @@ export class HomeComponent {
 
   async getUsuarios() {
     try {
-      this.arrUsuario = await this.usuariosService.getAllUsers()
+      let response : IResponse = await this.usuariosService.getAllUsers()
+      this.arrUsuario = response.results
       console.log(this.arrUsuario)
     } catch (msg: any){
       console.log(msg)
     }
-  } */
+  }
 }
