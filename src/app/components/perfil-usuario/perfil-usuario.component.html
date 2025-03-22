@@ -37,8 +37,8 @@
         <div class="col-md-7">
             <h2>{{usuario.first_name}}</h2>
             <h3>{{usuario.last_name}}</h3>
-            <p>Nombre Usuario: {{usuario.username}}</p>
-            <p><strong>Email:</strong> {{usuario.email}}</p>
+            <p><span class="fw-bold">Nombre Usuario: </span>{{usuario.username}}</p>
+            <p><span class="fw-bold">Email: </span>{{usuario.email}}</p>
             <div class="row">
                 <button class="col-3 btn btn-outline-primary" (click)="deleteUser(id)">Eliminar</button>
                 <button class="col-3 btn btn-outline-primary">Actualizar</button>

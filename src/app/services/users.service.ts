@@ -11,9 +11,11 @@ export class UsersService {
 
   private endPoint: string = "https://peticiones.online/api/users"
   private httpClient = inject(HttpClient);
+  page : number = 1
 
-  getAllUsers(): Promise<IResponse>  {
-    return lastValueFrom(this.httpClient.get<IResponse>(this.endPoint))
+  getAllUsers(url : string): Promise<IResponse>  {
+    url = (url === "") ? `https://peticiones.online/api/users/?page=${this.page}` : url
+    return lastValueFrom(this.httpClient.get<IResponse>(url))
   }
   getUsersById(id : string): Promise<IUsuario> {
     return lastValueFrom(this.httpClient.get<IUsuario>(`${this.endPoint}/${id}`))
@@ -25,3 +27,8 @@ export class UsersService {
     return lastValueFrom(this.httpClient.put<IUsuario>(`${this.endPoint}/${id}`))
   } */
 }
+
+/* getAllPromise(url: string): Promise<IResponse> {
+  url = (url === "") ? "https://dragonball-api.com/api/characters?limit=8" : url
+  return lastValueFrom(this.httpClient.get<IResponse>(url))
+} */
