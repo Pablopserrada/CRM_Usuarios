@@ -26,12 +26,7 @@ export class UsersService {
   updateUser(id : string, body : any) {
     return lastValueFrom(this.httpClient.put<IUsuario>(`${this.endPoint}/${id}`,body))
   }
-  createUser(id : string, body : IUsuario) {
-    return lastValueFrom(this.httpClient.post<IUsuario>(`${this.endPoint}/${id}`,body))
+  createUser(body : IUsuario) {
+    return lastValueFrom(this.httpClient.post<IUsuario>(`${this.endPoint}`,body))
   }
 }
-
-/* getAllPromise(url: string): Promise<IResponse> {
-  url = (url === "") ? "https://dragonball-api.com/api/characters?limit=8" : url
-  return lastValueFrom(this.httpClient.get<IResponse>(url))
-} */

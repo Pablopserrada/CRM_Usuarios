@@ -1,2 +1,56 @@
 <app-header></app-header>
-<p>form-usuarios works!</p>
+<section class="container">
+    @if (idUsuario !== undefined) {
+        <h1>Actualizar Usuario</h1>
+    } @else {
+        <h1>Nuevo Usuario</h1>
+    }
+    <hr>
+    <form [formGroup]="userForm" (ngSubmit)="getDataForm()">
+        <input type="hidden" formControlName="_id">
+        <div class="mb-3">
+            <label for="nombre" class="form-label">Nombre del usuario</label>
+            <input type="text" class="form-control" id="nombre" placeholder="Introduzca nombre de usuario" formControlName="first_name">
+            @if (checkFields('nombre', 'required')) {
+                <p class="error">El campo es obligatorio</p>
+            }
+            @if (checkFields('first_name','minlength')) {
+                <p class="error">El campo debe tener al menos 3 caractéres</p>
+            }
+        </div>
+        <div class="mb-3">
+            <label for="apellido" class="form-label">Apellido del usuario</label>
+            <input type="text" class="form-control" id="apellido" placeholder="Introduzca apellido de usuario" formControlName="last_name">
+            @if (checkFields('nombre', 'required')) {
+                <p class="error">El campo es obligatorio</p>
+            }
+            @if (checkFields('last_name','minlength')) {
+                <p class="error">El campo debe tener al menos 3 caractéres</p>
+            }
+            @if (checkFields('last_name','pattern')) {
+                <p class="error">Se deben introducir los dos apellidos</p>
+            }
+        </div>
+        <div class="mb-3">
+            <label for="correo" class="form-label">Correo electrónico</label>
+            <input type="text" class="form-control" id="correo" placeholder="Introduzca correo de usuario" formControlName="email">
+            @if (checkFields('nombre', 'required')) {
+                <p class="error">El campo es obligatorio</p>
+            }
+            @if (checkFields('email','pattern')) {
+                <p class="error">El e-mail no tiene el formato correcto</p>
+            }
+        </div>
+        <div class="mb-3">
+            <label for="urlImagen" class="form-label">Imagen del usuario</label>
+            <input type="text" class="form-control" id="urlImagen" placeholder="Introduzca imagen de usuario" formControlName="image">
+            @if (checkFields('nombre', 'required')) {
+                <p class="error">El campo es obligatorio</p>
+            }
+            @if (checkFields('image','pattern')) {
+                <p class="error">La URL de la foto no es correcta</p>
+            }
+        </div>
+        <input type="submit" class="btn btn-primary" [value]="userForm.get('_id')?.value ? 'Actualizar' : 'Registrar'" [disabled]="userForm.invalid">
+    </form>
+</section>

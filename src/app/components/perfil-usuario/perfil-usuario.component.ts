@@ -1,8 +1,9 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, Input } from '@angular/core';
 import { UsersService } from '../../services/users.service';
 import { HeaderComponent } from '../../shared/header/header.component';
 import { Router, RouterLink } from '@angular/router';
 import Swal from 'sweetalert2';
+import { IUsuario } from '../../interfaces/iusuario.interfaces';
 
 @Component({
   selector: 'app-perfil-usuario',
@@ -12,7 +13,7 @@ import Swal from 'sweetalert2';
 })
 export class PerfilUsuarioComponent {
   usuariosService = inject(UsersService);
-  usuario: any = '';
+  @Input() usuario!: IUsuario;
   id = window.location.pathname.split('/')[2];
   router = inject(Router);
 
@@ -23,9 +24,12 @@ export class PerfilUsuarioComponent {
   async getUsuariosById(id: string) {
     try {
       this.usuario = await this.usuariosService.getUsersById(id);
-      console.log(this.usuario);
     } catch (msg: any) {
-      console.log(msg);
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Algo ha ido mal.",
+      });
     }
   }
   deleteUser(id: any) {
@@ -45,7 +49,11 @@ export class PerfilUsuarioComponent {
           this.usuariosService.deleteUser(id);
           this.router.navigate(['/home']);
         } catch (msg) {
-          console.log(msg);
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Algo ha ido mal.",
+          });
         }
       }
     });

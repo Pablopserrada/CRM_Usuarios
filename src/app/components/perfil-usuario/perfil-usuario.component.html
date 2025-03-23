@@ -1,32 +1,8 @@
-<app-header></app-header>
-<!-- <div class="card row" style="width: 18rem;">
-    <div class="col-6">
-    <img [src]="usuario.image" class="card-img-top col" alt="...">
-      <h4 class="card-title col">{{usuario.first_name}}</h4>
-      <h5 class="card_subtitle">{{usuario.last_name}}</h5>
-    </div>
-    <ul class="col-6">
-      <li class="list-group-item">An item</li>
-      <li class="list-group-item">A second item</li>
-      <li class="list-group-item">A third item</li>
-    </ul>
-    <div class="card-body">
-      <a href="#" class="card-link">Card link</a>
-      <a href="#" class="card-link">Another link</a>
-    </div>
-  </div> -->
+<header>
+    <app-header></app-header>
+</header>
 
-<!-- <div class="grid text-center" style="--bs-columns: 4; --bs-gap: 5rem;">
-    <div class="g-col-2">
-        
-    </div>
-    <div class="g-col-2">
-        <h4 class="card-title col">{{usuario.first_name}}</h4>
-        <h5 class="card_subtitle">{{usuario.last_name}}</h5>
-    </div>
-</div> -->
-
-<div class="container mt-5">
+<section class="container mt-5">
     <div class="row align-items-center">
         <div class="col-md-4 text-center">
             <img [src]="usuario.image" class="img-fluid rounded" alt="{{usuario.first_name}} {{usuario.last_name}}">
@@ -41,9 +17,9 @@
             <p><span class="fw-bold">Email: </span>{{usuario.email}}</p>
             <div class="row">
                 <button class="col-3 btn btn-outline-primary" (click)="deleteUser(id)">Eliminar</button>
-                <button class="col-3 btn btn-outline-primary">Actualizar</button>
+                <a class="col-3 btn btn-outline-primary" [routerLink]="['/actualizarUsuario/',usuario._id]">Actualizar</a>
                 <a class="col-3 btn btn-outline-primary" [routerLink]="['/home']">Volver al listado</a>
             </div>
         </div>
     </div>
-</div>
+</section>

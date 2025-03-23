@@ -16,7 +16,6 @@ export class UserCardComponent {
   router = inject(Router);
 
   deleteUser(id: any) {
-    console.log(id);
     Swal.fire({
       title: `¿Deseas eliminar al usuario ${this.miUsuario.first_name}?`,
       text: 'No podrás revertir estos cambios',
@@ -30,9 +29,12 @@ export class UserCardComponent {
         Swal.fire('Eliminado!', '', 'success');
         try {
           this.usersService.deleteUser(id);
-          this.router.navigate(['/home']);
         } catch (msg) {
-          console.log(msg);
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Algo ha ido mal",
+          });
         }
       }
     });
