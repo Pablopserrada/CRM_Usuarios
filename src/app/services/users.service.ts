@@ -23,9 +23,12 @@ export class UsersService {
   deleteUser(id : string): Promise<IUsuario> {
     return lastValueFrom(this.httpClient.delete<IUsuario>(`${this.endPoint}/${id}`))
   }
-  /* updateUser(id : string, first_name? :string, last_name? : string, username? : string, email?: string, image?: string): Promise<IUsuario> {
-    return lastValueFrom(this.httpClient.put<IUsuario>(`${this.endPoint}/${id}`))
-  } */
+  updateUser(id : string, body : any) {
+    return lastValueFrom(this.httpClient.put<IUsuario>(`${this.endPoint}/${id}`,body))
+  }
+  createUser(id : string, body : IUsuario) {
+    return lastValueFrom(this.httpClient.post<IUsuario>(`${this.endPoint}/${id}`,body))
+  }
 }
 
 /* getAllPromise(url: string): Promise<IResponse> {
