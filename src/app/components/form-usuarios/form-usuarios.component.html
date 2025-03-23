@@ -51,6 +51,6 @@
                 <p class="error">La URL de la foto no es correcta</p>
             }
         </div>
-        <input type="submit" class="btn btn-primary" [value]="userForm.get('_id')?.value ? 'Actualizar' : 'Registrar'" [disabled]="userForm.invalid">
+        <input type="submit" class="btn btn-primary" [value]="userForm.get('_id')?.value ? 'Actualizar' : 'Registrar'" [disabled]="userForm.invalid && !userForm.get('_id')?.value">
     </form>
 </section>

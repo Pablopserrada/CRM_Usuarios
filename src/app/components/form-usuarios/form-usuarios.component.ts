@@ -1,9 +1,10 @@
 import { Component, inject, Input } from '@angular/core';
-import { HeaderComponent } from '../../shared/header/header.component';
-import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { IUsuario } from '../../interfaces/iusuario.interfaces';
 import { UsersService } from '../../services/users.service';
 import Swal from 'sweetalert2';
+import { HeaderComponent } from '../../shared/header/header.component';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-form-usuarios',
@@ -16,6 +17,7 @@ export class FormUsuariosComponent {
   usuario! : IUsuario
   userForm : FormGroup = new FormGroup ({}, [])
   usuariosService = inject(UsersService);
+  router = inject(Router)
 
   async ngOnInit() {
     console.log(this.idUsuario)
@@ -66,6 +68,8 @@ export class FormUsuariosComponent {
       this.usuario.username = this.usuario.first_name.split(" ").join("").toLowerCase() + "." + this.usuario.last_name.split(" ").join("").toLowerCase()
       this.usuario.email = this.usuario.first_name.split(" ").join("").toLowerCase() + "." + this.usuario.last_name.split(" ").join("").toLowerCase() + "@gmail.com"
       this.usuariosService.updateUser(this.idUsuario, this.usuario)
+      Swal.fire('Actualizado!', '', 'success');
+      this.router.navigate(['/home'])
     } else {
       this.usuariosService.createUser(this.userForm.value)
     }
